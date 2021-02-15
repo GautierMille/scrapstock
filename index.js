@@ -35,8 +35,8 @@ const checkWebsite = async (url) => {
       let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'gotps5test@gmail.com',
-          pass: 'poiuyt098765'
+          user: '',
+          pass: ''
         }
       });
 
