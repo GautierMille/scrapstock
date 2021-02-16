@@ -3,11 +3,11 @@ const { scrapProduct } = require("./scrapProduct")
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
 const open = require('open');
-
+require('events').EventEmitter.defaultMaxListeners = 15;
 
 
 const urls = [
-  "https://www.auchan.fr/sony-manette-sans-fil-dualsense-ps5/p-c1316004",
+  "https://www.auchan.fr/sony-console-ps5-edition-standard/p-c1315865",
   "https://www.fnac.com/Console-Sony-PS5-Edition-Standard/a14119956/",
   "https://www.cdiscount.com/jeux-pc-video-console/ps5/console-ps5-sony-ps5/f-1035001-son3665540797413.html",
   "https://www.micromania.fr/playstation-5-105642.html",
@@ -29,6 +29,8 @@ const checkWebsite = async (url) => {
 
   if (result) {
     console.log("dispo!!!!")
+    console.log("\007")
+
     open(url);
 
     try {
@@ -42,7 +44,7 @@ const checkWebsite = async (url) => {
 
       const mailOptions = {
         from: 'gotps5test@gmail.com',
-        to: 'gotps5test@gmail.com',
+        to: 'gautier.mille@gmail.com, alexandre.flament@icloud.com, demian.ortega.m@gmail.com ',
         subject: 'PS5 dispo!!!!',
         text: result
       };
@@ -61,9 +63,9 @@ const checkWebsite = async (url) => {
     console.log("-_-' pas dispo")
   }
 }
-// cron.schedule('*/5 * * * *', () => {
-// for (url of urls) {
-checkWebsite(url)
-// }
-// })
+cron.schedule('* * * * *', () => {
+  for (url of urls) {
+    checkWebsite(url)
+  }
+})
 

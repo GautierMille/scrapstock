@@ -30,21 +30,21 @@ const scrapProduct = async (url) => {
       //DONE
     }
     else if (url.includes("amazon.de")) {
-      console.log("amazon")
+      console.log("amazon DE")
       name = "Amazon DE"
       addToCartSelector = 'input#add-to-cart-button'
       priceSelector = "span#priceblock_ourprice"
       //DONE
     }
     else if (url.includes("amazon.co.uk")) {
-      console.log("amazon")
+      console.log("amazon UK")
       name = "Amazon UK"
       addToCartSelector = 'input#add-to-cart-button'
       priceSelector = "span#priceblock_ourprice"
       //DONE
     }
     else if (url.includes("amazon.es")) {
-      console.log("amazon")
+      console.log("amazon ES")
       name = "Amazon ES"
       addToCartSelector = 'input#add-to-cart-button'
       priceSelector = "span#priceblock_ourprice"
@@ -143,7 +143,7 @@ const scrapProduct = async (url) => {
   }
 
   catch (error) {
-    console.log(error);
+    console.log(`${url}:`, error);
     return false
   }
 
